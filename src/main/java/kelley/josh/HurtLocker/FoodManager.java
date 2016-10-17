@@ -71,5 +71,9 @@ public class FoodManager {
         createNewFood(name,nameOccurrences,price,priceOccurrences);
     }
 
+    public String errorBreakdown(){
+        return String.format("Errors %15s seen: %d times"," ",regex.checkForErrors(Patterns.foodName,Patterns.price));
+    }
+
 
 }

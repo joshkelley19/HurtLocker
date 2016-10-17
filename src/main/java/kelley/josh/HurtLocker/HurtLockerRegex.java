@@ -4,7 +4,6 @@ import kelley.josh.HurtLocker.HurtLockerTests.Patterns;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -111,6 +110,25 @@ public class HurtLockerRegex {
             }
         }
         return matches;
+    }
+
+    public int checkForErrors(Pattern name, Pattern price){
+        List<String> data = null;
+        int errors=0;
+        try {
+            data = jerkSonObjectMatch();
+        }catch (HurtLockerException e){
+            System.out.println(e.getMessage());
+        }
+        for (String d: data){
+            if(!name.matcher(d).find()){
+                errors++;
+            }
+            if(!price.matcher(d).find()){
+                errors++;
+            }
+        }
+        return errors;
     }
 
     public static void main(String[] args) {

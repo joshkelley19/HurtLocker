@@ -15,7 +15,7 @@ public class Patterns {
     public static final Pattern bread = Pattern.compile("[bB][rR][eE][aA][dD]");
     public static final Pattern breadPrice = Pattern.compile("[bB][rR][eE][aA][dD].(\\w)*:[\\d][.][\\d]{2}");
     public static final Pattern jerkSonObject = Pattern.compile("([nN][aA][mM][eE]):(\\w)*[:@^*%;](([pP][rR][iI][cC][eE]):([\\d][.][\\d][\\d])?[:@^*%;])((type):(\\w)*[:@^*%;!])((expiration):([\\d][/][\\d]{1,2}[/][\\d]{4})?)##");
-    public static final Pattern price = Pattern.compile("[\\d].[\\d]{2}");
-    public static final Pattern foodName = Pattern.compile(":[\\w]*");
+    public static final Pattern price = Pattern.compile("[\\d][.][\\d]{2}");
+    public static final Pattern foodName = Pattern.compile("[nN][aA][mM][eE].[\\w]+");
 
 }

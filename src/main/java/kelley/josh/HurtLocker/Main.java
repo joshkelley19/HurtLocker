@@ -18,5 +18,6 @@ public class Main {
         for (Food f: foodManager.foods){
             System.out.println(f);
         }
+        System.out.println(foodManager.errorBreakdown());
     }
 }
