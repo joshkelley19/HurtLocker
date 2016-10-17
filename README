@@ -27,7 +27,7 @@ In the shopping list Tariq has Cookies, but he could spell like Cookies, c00Kies
 
 YOU ARE NOT ALLOWED to use any Java based string manipulation!!!!!!!!!!!!
 
-You must use regex to detect the patterns and match them.
+You must use hurtLockerRegex to detect the patterns and match them.
 
 
 Oh one more thing.... Tariq is kind of petty... so you can blame STELLA and JOCELYN for this.

@@ -1,3 +1,5 @@
+package kelley.josh.HurtLocker;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -12,6 +14,9 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception{
-
+        FoodManager foodManager = new FoodManager();
+        for (Food f: foodManager.foods){
+            System.out.println(f);
+        }
     }
 }
