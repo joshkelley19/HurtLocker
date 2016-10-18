@@ -59,6 +59,24 @@ public class RegexTests {
         assertEquals(expected,actual);
     }
 
-//    @Test
-//    public void
+    @Test
+    public void getApplesMatches0(){
+        int expected = 4;
+        int actual = regex.getFoodMatches(Patterns.apples);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getMilkMatches0(){
+        int expected = 8;
+        int actual = regex.getFoodMatches(Patterns.milk);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getBreadMatches0(){
+        int expected = 6;
+        int actual = regex.getFoodMatches(Patterns.bread);
+        assertEquals(expected,actual);
+    }
 }

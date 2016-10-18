@@ -3,7 +3,6 @@ package kelley.josh.HurtLocker;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.StringJoiner;
 import java.util.TreeSet;
 
 /**
@@ -17,22 +16,6 @@ public class Food {
 
     public Food(String name,int nameOccurrences,TreeSet price, ArrayList priceOccurrences){
         this.name=name;this.nameOccurrences=nameOccurrences;this.price=price;this.priceOccurrences=priceOccurrences;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getNameOccurrences() {
-        return nameOccurrences;
-    }
-
-    public TreeSet getPrice() {
-        return price;
-    }
-
-    public ArrayList getPriceOccurrences() {
-        return priceOccurrences;
     }
 
     public String toString(){

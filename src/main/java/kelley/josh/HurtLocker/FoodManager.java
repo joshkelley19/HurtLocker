@@ -2,10 +2,7 @@ package kelley.josh.HurtLocker;
 
 import kelley.josh.HurtLocker.HurtLockerTests.Patterns;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by joshuakelley on 10/17/16.
@@ -13,67 +10,41 @@ import java.util.TreeSet;
 public class FoodManager {
     ArrayList<Food> foods = new ArrayList<>();
     HurtLockerRegex regex = new HurtLockerRegex();
+    String[] foodsList = {"Cookies",Patterns.cookies,"Apples",Patterns.apples,"Milk",Patterns.milk,"Bread",Patterns.bread};
+    HashMap<String,String> foodMap = new HashMap<>();
 
     public FoodManager(){
-        setup();
+        createFoodMap();setup();
     }
 
     private void setup() {
-        findApples();findBread();findCookies();findMilk();
+        for(Map.Entry<String,String> strang: foodMap.entrySet()){
+            createFoodObject(strang.getKey(),strang.getValue(),Patterns.price);
+        }
+    }
+
+    private void createFoodObject(String name, String food, String prices){
+        int nameOccurrences = regex.getFoodMatches(food);
+        TreeSet<String> price=regex.prices(food+prices);
+        ArrayList<Integer> priceOccurrences = new ArrayList<>();
+        Iterator<String> priceIterator = price.iterator();
+        while (priceIterator.hasNext()){
+            priceOccurrences.add(regex.getPriceMatches(food+prices,priceIterator.next()));
+        }
+        createNewFood(name,nameOccurrences,price,priceOccurrences);
     }
 
     public void createNewFood(String name, int nameOccurrences, TreeSet price, ArrayList priceOccurrences){
         foods.add(new Food(name,nameOccurrences,price,priceOccurrences));
     }
 
-    public void findCookies(){
-        String name = "Cookies";
-        int nameOccurrences = regex.getFoodMatches(Patterns.cookies);
-        TreeSet<String> price=regex.prices(Patterns.cookiesPrice);
-        ArrayList<Integer> priceOccurrences = new ArrayList<>();
-        Iterator<String> priceIterator = price.iterator();
-        while (priceIterator.hasNext()){
-            priceOccurrences.add(regex.getPriceMatches(Patterns.cookiesPrice,priceIterator.next()));
-        }
-        createNewFood(name,nameOccurrences,price,priceOccurrences);
-    }
-    public void findApples(){
-        String name = "Apples";
-        int nameOccurrences = regex.getFoodMatches(Patterns.apples);
-        TreeSet<String> price=regex.prices(Patterns.applesPrice);
-        ArrayList<Integer> priceOccurrences = new ArrayList<>();
-        Iterator<String> priceIterator = price.iterator();
-        while (priceIterator.hasNext()){
-            priceOccurrences.add(regex.getPriceMatches(Patterns.applesPrice,priceIterator.next()));
-        }
-        createNewFood(name,nameOccurrences,price,priceOccurrences);
-    }
-    public void findMilk(){
-        String name = "Milk";
-        int nameOccurrences = regex.getFoodMatches(Patterns.milk);
-        TreeSet<String> price=regex.prices(Patterns.milkPrice);
-        ArrayList<Integer> priceOccurrences = new ArrayList<>();
-        Iterator<String> priceIterator = price.iterator();
-        while (priceIterator.hasNext()){
-            priceOccurrences.add(regex.getPriceMatches(Patterns.milkPrice,priceIterator.next()));
-        }
-        createNewFood(name,nameOccurrences,price,priceOccurrences);
-    }
-    public void findBread(){
-        String name = "Bread";
-        int nameOccurrences = regex.getFoodMatches(Patterns.bread);
-        TreeSet<String> price=regex.prices(Patterns.breadPrice);
-        ArrayList<Integer> priceOccurrences = new ArrayList<>();
-        Iterator<String> priceIterator = price.iterator();
-        while (priceIterator.hasNext()){
-            priceOccurrences.add(regex.getPriceMatches(Patterns.breadPrice,priceIterator.next()));
-        }
-        createNewFood(name,nameOccurrences,price,priceOccurrences);
-    }
-
     public String errorBreakdown(){
         return String.format("Errors %15s seen: %d times"," ",regex.checkForErrors(Patterns.foodName,Patterns.price));
     }
 
-
+    private void createFoodMap(){
+        for (int i = 0;i<7;i+=2){
+            foodMap.put(foodsList[i],foodsList[i+1]);
+        }
+    }
 }
